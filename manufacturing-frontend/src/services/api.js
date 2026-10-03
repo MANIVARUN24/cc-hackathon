@@ -6,7 +6,7 @@
  * which in turn receives real MQTT data from the Python gateway.
  */
 
-const BASE_URL = 'http://localhost:8080/api';
+const BASE_URL = '/api';
 
 /**
  * Fetch the latest sensor reading.
