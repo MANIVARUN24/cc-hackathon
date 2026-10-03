@@ -1,0 +1,63 @@
+# ============================================================
+# Manufacturing Plant Monitor - .gitignore
+# NEVER commit certificates, private keys, or credentials
+# ============================================================
+
+# ---- AWS IoT Certificates and Keys ----
+*.pem
+*.key
+*.crt
+*.p12
+*.jks
+connect_device_package/
+
+# ---- Environment / Secrets ----
+.env
+.env.*
+*.local
+application.properties
+application-local.properties
+application-prod.properties
+application-secrets.properties
+secrets/
+
+# ---- Java / Maven ----
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.log
+.mvn/wrapper/maven-wrapper.jar
+
+# ---- IDE ----
+.idea/
+*.iml
+*.ipr
+*.iws
+.eclipse/
+.settings/
+.classpath
+.project
+*.swp
+*.swo
+.metadata/
+
+# ---- Node / React ----
+node_modules/
+dist/
+.vite/
+manufacturing-frontend/node_modules/
+manufacturing-frontend/dist/
+
+# ---- OS ----
+.DS_Store
+Thumbs.db
+desktop.ini
+*.tmp
+
+# ---- Logs ----
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*

@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./manufacturing-backend
+      dockerfile: Dockerfile
+    container_name: manufacturing-backend
+    ports:
+      - "8080:8080"
+    environment:
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=Manufacturing2024
+      - AWS_IOT_ENDPOINT=a3v54o252hrth4-ats.iot.us-east-1.amazonaws.com
+      - AWS_IOT_CLIENT_ID=manufacturing-backend
+      - AWS_IOT_TOPIC=sdk/test/python
+      - AWS_IOT_CERTIFICATE=/app/certs/certificate.pem
+      - AWS_IOT_PRIVATE_KEY=/app/certs/private.key
+      - AWS_IOT_ROOT_CA=/app/certs/root-CA.crt
+    volumes:
+      - ./certs:/app/certs:ro
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./manufacturing-frontend
+      dockerfile: Dockerfile
+    container_name: manufacturing-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
